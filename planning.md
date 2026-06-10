@@ -11,7 +11,7 @@
 
 <!-- What domain did you choose? Why is this knowledge valuable and hard to find through official channels? -->
 
---- I chose the domain of MIT food, dining, and student food resources. This knowledge is valuable because students frequently have questions about meal plans, dining halls, cook-for-yourself dorms, grocery options, and food support resources. While some of this information exists on official MIT websites, students often have to piece it together from blogs, reports, FAQs, and discussion threads. This system makes these scattered resources searchable through a single interface.
+---I chose the domain of "The Unofficial MIT Survival Guide." This system combines information about dining, dorm life, grocery options, food insecurity resources, campus hacks, and advice shared by MIT students. While MIT provides official resources, many of the most useful insights come from student blogs, Reddit discussions, and community-generated guides that are scattered across different places and difficult to search efficiently. This system aims to bring together both official information and student experiences into a single searchable guide that helps students navigate everyday life at MIT.
 
 ## Documents
 
@@ -20,29 +20,21 @@
 
 | # | Source | Description | URL or location |
 |---|--------|-------------|-----------------|
-| 1 | | | |
-| 2 | | | |
-| 3 | | | |
-| 4 | | | |
-| 5 | | | |
-| 6 | | | |
-| 7 | | | |
-| 8 | | | |
-| 9 | | | |
-| 10 | | | |
-
-| # | Source | Description | URL or location |
-|---|--------|-------------|-----------------|
-| 1 | MIT Dining | Official dining information and meal plans | https://studentlife.mit.edu/dining/ |
-| 2 | MIT Student Life | Overview of student dining resources | https://studentlife.mit.edu/ |
-| 3 | MIT Food Resource Guide | Grocery stores and food resources near MIT | https://advising.mit.edu/fli/resources/food-resource-guide/ |
-| 4 | DoingWell Food Resources | Food and financial assistance programs | https://doingwell.mit.edu/foodandfinancial/ |
-| 5 | Food @ MIT Guide | Student-curated food resource links | https://linktr.ee/food.at.mit |
-| 6 | MIT UA Food Report | Student perspectives on food insecurity and dining | https://ua-edit.squarespace.com/s/Food-Report-Final.pdf |
-| 7 | MIT Admissions Blog | "How to Survive in a Cook-for-Yourself Community" | https://mitadmissions.org/blogs/entry/how-to-survive-in-a-cook-for-yourself-community/ |
-| 8 | MIT Admissions Blog | "MIT Dining Halls" | https://mitadmissions.org/blogs/entry/mit-dining-halls/ |
-| 9 | MIT Admissions FAQ | Housing and dining FAQ | https://mitadmissions.org/help/faq/housing-dining/ |
-| 10 | Reddit r/mit | Student discussion about dorms and meal plans | https://www.reddit.com/r/mit/comments/1iz9648/incoming_freshman_wondering_about_dorms_at_mit/ |
+| 1 | MIT Food Resource Guide (UAC) | Official list of food pantries, grocery resources, and food assistance for MIT students | https://advising.mit.edu/fli/resources/food-resource-guide/ |
+| 2 | MIT Free & Low-Cost Student Resources (OGE) | Lists grocery shuttles, MBTA discounts, food discounts, and campus perks | https://oge.mit.edu/student-support-development/free-low-cost-student-resources |
+| 3 | MIT Grocery Shuttle Schedule | Official shuttle routes and schedules to Costco, Trader Joe's, Whole Foods, Market Basket, Star Market | https://web.mit.edu/Facilities/transportation/shuttles/grocery.html |
+| 4 | MIT Admissions: Dining Halls (student blog) | Student-written ranking and review of MIT dining halls | https://mitadmissions.org/blogs/entry/mit-dining-halls/ |
+| 5 | MIT Admissions: How to Survive in a Cook-for-Yourself Community | Student advice on living in non-dining dorms, grocery shopping, meal prep | https://mitadmissions.org/blogs/entry/how-to-survive-in-a-cook-for-yourself-community/ |
+| 6 | MIT Admissions: Groceries Guide (guest post) | Detailed student guide comparing nearby grocery stores (HMart, Star Market, Trader Joe's, Harvest Co-op, etc.) | https://mitadmissions.org/blogs/entry/where-to-buy-food-mit-groceries-guide/ |
+| 7 | MIT Admissions: Guide to Choosing a Dorm | Student breakdown of dorm cultures, pricing tiers, dining hall dorms vs cook-for-yourself | https://mitadmissions.org/blogs/entry/how-to-not-choose-a-dorm/ |
+| 8 | MIT Admissions: How Dorm Structure Shapes Social Life | Student perspective on how physical dorm layout affects community and daily life | https://mitadmissions.org/blogs/entry/how-dorm-structure-shapes-social-life/ |
+| 9 | MIT Admissions: Starting Your First Year | Tips from a student OL — clubs, dining, first-week survival | https://mitadmissions.org/blogs/entry/so-youre-starting-your-first-year/ |
+| 10 | MIT Admissions: Things I Wish I Knew | Upperclassman advice on navigating MIT academically and socially | https://mitadmissions.org/blogs/entry/some-things-i-wish-i-knew-coming-in/ |
+| 11 | MIT Admissions: An MIT Survival Guide | Early but useful student tips on sleep, food, social life, and campus navigation | https://mitadmissions.org/blogs/entry/an_mit_survival_guide/ |
+| 12 | MIT Admissions: Dining at MIT (overview) | Explains meal plan options, dining hall vs cook-for-yourself tradeoffs | https://mitadmissions.org/blogs/entry/dining-at-mit/ |
+| 13 | MIT ISO: Food Resources for International Students | Lists grocery stores by distance from campus with walking times, food apps (Too Good To Go), on-campus options | https://iso.mit.edu/?p=293 |
+| 14 | MIT News: TechMart At-Cost Grocery Store | About MIT's on-campus grocery store selling staples at cost for students | https://news.mit.edu/2018/mit-techmart-at-cost-grocery-store-pilot-opens-in-walker-memorial-0926 |
+| 15 | Reddit r/mit: Incoming Freshman Wondering About Dorms | Student Q&A on dorm culture, dining, and first-year experience | https://www.reddit.com/r/mit/comments/1iz9648/incoming_freshman_wondering_about_dorms_at_mit/ |
 
 ---
 
