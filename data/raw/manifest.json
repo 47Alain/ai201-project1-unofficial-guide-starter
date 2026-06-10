@@ -1,0 +1,137 @@
+[
+  {
+    "id": 1,
+    "slug": "mit_food_resource_guide",
+    "name": "MIT Food Resource Guide (UAC)",
+    "url": "https://advising.mit.edu/fli/resources/food-resource-guide/",
+    "file": "data/raw/mit_food_resource_guide.txt",
+    "char_count": 1685,
+    "status": "ok"
+  },
+  {
+    "id": 2,
+    "slug": "mit_oge_low_cost_resources",
+    "name": "MIT Free & Low-Cost Student Resources (OGE)",
+    "url": "https://oge.mit.edu/student-support-development/free-low-cost-student-resources",
+    "file": "data/raw/mit_oge_low_cost_resources.txt",
+    "char_count": 9622,
+    "status": "ok"
+  },
+  {
+    "id": 3,
+    "slug": "mit_grocery_shuttle_schedule",
+    "name": "MIT Grocery Shuttle Schedule",
+    "url": "https://web.mit.edu/Facilities/transportation/shuttles/grocery.html",
+    "file": "data/raw/mit_grocery_shuttle_schedule.txt",
+    "char_count": 3197,
+    "status": "ok"
+  },
+  {
+    "id": 4,
+    "slug": "mitadmissions_dining_halls",
+    "name": "MIT Admissions: Dining Halls (student blog)",
+    "url": "https://mitadmissions.org/blogs/entry/mit-dining-halls/",
+    "file": "data/raw/mitadmissions_dining_halls.txt",
+    "char_count": 14311,
+    "status": "ok"
+  },
+  {
+    "id": 5,
+    "slug": "mitadmissions_cook_for_yourself",
+    "name": "MIT Admissions: Cook-for-Yourself Community",
+    "url": "https://mitadmissions.org/blogs/entry/how-to-survive-in-a-cook-for-yourself-community/",
+    "file": "data/raw/mitadmissions_cook_for_yourself.txt",
+    "char_count": 12956,
+    "status": "ok"
+  },
+  {
+    "id": 6,
+    "slug": "mitadmissions_groceries_guide",
+    "name": "MIT Admissions: Groceries Guide",
+    "url": "https://mitadmissions.org/blogs/entry/where-to-buy-food-mit-groceries-guide/",
+    "file": "data/raw/mitadmissions_groceries_guide.txt",
+    "char_count": 7297,
+    "status": "ok"
+  },
+  {
+    "id": 7,
+    "slug": "mitadmissions_choosing_dorm",
+    "name": "MIT Admissions: Guide to Choosing a Dorm",
+    "url": "https://mitadmissions.org/blogs/entry/how-to-not-choose-a-dorm/",
+    "file": "data/raw/mitadmissions_choosing_dorm.txt",
+    "char_count": 8350,
+    "status": "ok"
+  },
+  {
+    "id": 8,
+    "slug": "mitadmissions_dorm_social_life",
+    "name": "MIT Admissions: How Dorm Structure Shapes Social Life",
+    "url": "https://mitadmissions.org/blogs/entry/how-dorm-structure-shapes-social-life/",
+    "file": "data/raw/mitadmissions_dorm_social_life.txt",
+    "char_count": 26731,
+    "status": "ok"
+  },
+  {
+    "id": 9,
+    "slug": "mitadmissions_starting_first_year",
+    "name": "MIT Admissions: Starting Your First Year",
+    "url": "https://mitadmissions.org/blogs/entry/so-youre-starting-your-first-year/",
+    "file": "data/raw/mitadmissions_starting_first_year.txt",
+    "char_count": 8246,
+    "status": "ok"
+  },
+  {
+    "id": 10,
+    "slug": "mitadmissions_things_i_wish_i_knew",
+    "name": "MIT Admissions: Things I Wish I Knew",
+    "url": "https://mitadmissions.org/blogs/entry/some-things-i-wish-i-knew-coming-in/",
+    "file": "data/raw/mitadmissions_things_i_wish_i_knew.txt",
+    "char_count": 7760,
+    "status": "ok"
+  },
+  {
+    "id": 11,
+    "slug": "mitadmissions_survival_guide",
+    "name": "MIT Admissions: An MIT Survival Guide",
+    "url": "https://mitadmissions.org/blogs/entry/an_mit_survival_guide/",
+    "file": "data/raw/mitadmissions_survival_guide.txt",
+    "char_count": 4797,
+    "status": "ok"
+  },
+  {
+    "id": 12,
+    "slug": "mitadmissions_dining_overview",
+    "name": "MIT Admissions: Dining at MIT (overview)",
+    "url": "https://mitadmissions.org/blogs/entry/dining-at-mit/",
+    "file": "data/raw/mitadmissions_dining_overview.txt",
+    "char_count": 7716,
+    "status": "ok"
+  },
+  {
+    "id": 13,
+    "slug": "mit_iso_food_resources",
+    "name": "MIT ISO: Food Resources for International Students",
+    "url": "https://iso.mit.edu/?p=293",
+    "file": "data/raw/mit_iso_food_resources.txt",
+    "char_count": 3072,
+    "status": "ok"
+  },
+  {
+    "id": 14,
+    "slug": "mit_news_techmart",
+    "name": "MIT News: TechMart At-Cost Grocery Store",
+    "url": "https://news.mit.edu/2018/mit-techmart-at-cost-grocery-store-pilot-opens-in-walker-memorial-0926",
+    "file": "data/raw/mit_news_techmart.txt",
+    "char_count": 5148,
+    "status": "ok"
+  },
+  {
+    "id": 15,
+    "slug": "reddit_mit_dorms_freshman",
+    "name": "Reddit r/mit: Incoming Freshman Wondering About Dorms",
+    "url": "https://www.reddit.com/r/mit/comments/1iz9648/incoming_freshman_wondering_about_dorms_at_mit/",
+    "file": "data/raw/reddit_mit_dorms_freshman.txt",
+    "char_count": 13139,
+    "status": "ok"
+  }
+]
