@@ -11,7 +11,7 @@
 
 <!-- What domain did you choose? Why is this knowledge valuable and hard to find through official channels? -->
 
----
+--- I chose the domain of MIT food, dining, and student food resources. This knowledge is valuable because students frequently have questions about meal plans, dining halls, cook-for-yourself dorms, grocery options, and food support resources. While some of this information exists on official MIT websites, students often have to piece it together from blogs, reports, FAQs, and discussion threads. This system makes these scattered resources searchable through a single interface.
 
 ## Documents
 
@@ -30,6 +30,19 @@
 | 8 | | | |
 | 9 | | | |
 | 10 | | | |
+
+| # | Source | Description | URL or location |
+|---|--------|-------------|-----------------|
+| 1 | MIT Dining | Official dining information and meal plans | https://studentlife.mit.edu/dining/ |
+| 2 | MIT Student Life | Overview of student dining resources | https://studentlife.mit.edu/ |
+| 3 | MIT Food Resource Guide | Grocery stores and food resources near MIT | https://advising.mit.edu/fli/resources/food-resource-guide/ |
+| 4 | DoingWell Food Resources | Food and financial assistance programs | https://doingwell.mit.edu/foodandfinancial/ |
+| 5 | Food @ MIT Guide | Student-curated food resource links | https://linktr.ee/food.at.mit |
+| 6 | MIT UA Food Report | Student perspectives on food insecurity and dining | https://ua-edit.squarespace.com/s/Food-Report-Final.pdf |
+| 7 | MIT Admissions Blog | "How to Survive in a Cook-for-Yourself Community" | https://mitadmissions.org/blogs/entry/how-to-survive-in-a-cook-for-yourself-community/ |
+| 8 | MIT Admissions Blog | "MIT Dining Halls" | https://mitadmissions.org/blogs/entry/mit-dining-halls/ |
+| 9 | MIT Admissions FAQ | Housing and dining FAQ | https://mitadmissions.org/help/faq/housing-dining/ |
+| 10 | Reddit r/mit | Student discussion about dorms and meal plans | https://www.reddit.com/r/mit/comments/1iz9648/incoming_freshman_wondering_about_dorms_at_mit/ |
 
 ---
 
