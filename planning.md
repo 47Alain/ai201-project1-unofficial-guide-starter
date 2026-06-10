@@ -45,11 +45,25 @@
      numbers fit the structure of your documents.
      A review-heavy corpus warrants different chunking than a long FAQ. -->
 
-**Chunk size:**
+**Chunk size:** 600 characters
 
-**Overlap:**
+**Overlap:** 100 characters
 
-**Reasoning:**
+**Reasoning:** My documents are a mix of two types: long student blog posts (sources 4–12) with multi-paragraph
+advice, and structured resource pages (sources 1–3, 13–14) with short bullet-point lists. A
+600-character chunk captures roughly one full paragraph or 3–5 bullet points — enough for a
+complete thought (e.g., a student's full opinion on a dining hall, or a complete description of
+one grocery store) without merging unrelated topics into the same chunk.
+
+A smaller chunk (e.g., 200 characters) would fragment sentences mid-thought — a chunk might
+contain "The shuttle runs on Fridays" without the continuation "and the first and third Sundays,"
+making neither chunk fully answerable on its own. A larger chunk (e.g., 1200 characters) would
+merge multiple dining hall descriptions or multiple grocery store entries into one embedding,
+causing it to weakly match many queries but precisely answer none.
+
+The 100-character overlap is roughly one sentence. It ensures that a key fact at a paragraph
+boundary — like a specific store name or shuttle schedule detail — appears in both the preceding
+and following chunk, so at least one gets retrieved when a user asks about it.
 
 ---
 
@@ -61,11 +75,32 @@
      would you weigh in choosing a different embedding model — context length, multilingual
      support, accuracy on domain-specific text, latency? -->
 
-**Embedding model:**
+**Embedding model:**  all-MiniLM-L6-v2 via sentence-transformers (runs locally, no API key required)
 
-**Top-k:**
+
+**Top-k:** 5
+
+**Reasoning for top-k:**
+My documents cover several distinct subtopics (dining halls, grocery stores, dorm life, food
+assistance, campus tips). A query about grocery shuttles should pull 5 chunks to capture the
+official shuttle schedule, a student blog perspective, and the ISO resource page — all of which
+may hold complementary details. Fewer than 4 risks missing a key source; more than 6 risks
+flooding the LLM with loosely related content about unrelated subtopics (e.g., a question about
+shuttles pulling in dorm culture content).
 
 **Production tradeoff reflection:**
+If deploying for real users with no cost constraint, I would weigh:
+- **Context length**: all-MiniLM-L6-v2 has a 256-token input limit, which is fine for my
+  600-character chunks but would truncate longer passages. A model like text-embedding-3-large
+  (OpenAI) or voyage-large-2 supports longer inputs, which matters if chunk size grows.
+- **Domain specificity**: general-purpose models may underperform on MIT-specific jargon
+  (dorm names like "EC," "Maseeh," "Random Hall"). A fine-tuned or larger model would embed
+  these more meaningfully.
+- **Latency vs. accuracy**: local models like MiniLM have near-zero latency but lower accuracy
+  than API models. For a production student tool, the accuracy tradeoff likely favors an API
+  model like OpenAI's text-embedding-3-small, which balances cost and quality.
+- **Multilingual support**: MIT has many international students; a model like multilingual-e5
+  would handle queries in other languages, which MiniLM does not do well.
 
 ---
 
@@ -78,11 +113,11 @@
 
 | # | Question | Expected answer |
 |---|----------|-----------------|
-| 1 | | |
-| 2 | | |
-| 3 | | |
-| 4 | | |
-| 5 | | |
+| 1 | What grocery stores near MIT does the student grocery guide recommend for produce and bulk grains?|Harvest Co-op (bulk bins for grains and spices, reasonable produce prices) and the Stata Market produce stand (open Tuesdays, cash only) — from source 6 |
+| 2 |Does MIT offer free grocery shuttles, and which stores do they go to? | Yes — MIT runs free shuttles to Costco/Target/Aldi (Sundays), Trader Joe's/Whole Foods (Fridays + some Sundays), and Market Basket/Star Market — from source 3|
+| 3 | What do students say about the tradeoffs of living in a dining hall dorm vs. a cook-for-yourself dorm freshman year? | Dining hall dorms require a minimum meal plan (expensive, inflexible); cook-for-yourself dorms allow more social bonding around cooking but require more effort — from sources 5, 7, 12|
+| 4 | What food assistance resources are available to MIT students who are struggling to afford food? | MIT S^3 food pantry, TechMart at-cost grocery store, the ARM Coalition, emergency funds through GradSupport — from sources 1, 2, 14 |
+| 5 |What MBTA discount is available to MIT students, and how much does it save? |MIT subsidizes 50–70% of monthly MBTA pass costs for bus, subway, commuter rail, and commuter boat — from source 2 |
 
 ---
 
@@ -92,9 +127,24 @@
      Consider: noisy or inconsistent documents, missing source attribution, off-topic
      retrieval, chunks that split key information across boundaries. -->
 
-1.
+1. **Navigation and boilerplate text surviving cleaning**: MIT Admissions blog posts contain
+   author bios, comment counts, footnote markers (e.g., "⁠01"), and "Keep Reading" links
+   embedded throughout the text. If cleaning doesn't strip these, chunks like "⁠01 ahahaha
+   sorry" or "Keep Reading · Parting Remarks" will get embedded and may surface as false
+   matches for unrelated queries. I'll need to print a sample of cleaned text from each source before chunking and verify no boilerplate remains.
 
-2.
+2. **Key facts split across chunk boundaries**: Several documents contain information that
+   spans multiple sentences across a natural break — for example, shuttle schedules that list
+   the route on one line and the day/time on the next. If these split into separate chunks,
+   neither chunk alone answers "when does the Trader Joe's shuttle run?" The 100-character
+   overlap mitigates this, but it won't catch every case. I'll test this specifically in my
+   evaluation questions.
+
+3. **Reddit thread noise**: The Reddit source contains not just answers but also jokes,
+   off-topic replies, and meta-comments about MIT admissions. These will generate chunks with
+   high word count but no useful information, and they may retrieve on general MIT queries
+   even when irrelevant. I may need to manually filter comments below a score threshold or
+   only retain top-level comments.
 
 ---
 
@@ -105,6 +155,40 @@
      Label each stage with the tool or library you're using.
      You can use ASCII art, a Mermaid diagram, or embed a sketch as an image.
      You'll use this diagram as context when prompting AI tools to implement each stage. -->
+
+┌─────────────────────────────────────────────────────────────────┐
+│                        PIPELINE OVERVIEW                        │
+└─────────────────────────────────────────────────────────────────┘
+
+1. DOCUMENT INGESTION          2. CHUNKING
+   requests + BeautifulSoup  →  custom splitter
+   15 URLs fetched               600-char chunks
+   HTML stripped                 100-char overlap
+   Saved to /data/raw/*.txt      metadata: {source, chunk_index}
+          │                              │
+          └──────────────────────────────┘
+                                         │
+                                         ▼
+3. EMBEDDING + VECTOR STORE    4. RETRIEVAL
+   sentence-transformers       →  ChromaDB query
+   all-MiniLM-L6-v2               top-k = 5
+   ChromaDB collection             returns chunks + source names
+   stored locally
+          │                              │
+          └──────────────────────────────┘
+                                         │
+                                         ▼
+                            5. GENERATION
+                               Groq API
+                               llama-3.3-70b-versatile
+                               grounded prompt (context-only)
+                               output: answer + sources
+                                         │
+                                         ▼
+                            6. INTERFACE
+                               Gradio web UI (app.py)
+                               Input: question textbox
+                               Output: answer + retrieved sources
 
 ---
 
@@ -121,7 +205,30 @@
      with my specified chunk size and overlap" is a plan. -->
 
 **Milestone 3 — Ingestion and chunking:**
+Tool: Claude
+Input: My Documents table (all 15 sources with URLs), my Chunking Strategy section (600-char
+chunks, 100-char overlap), and the ingestion requirements from the project spec (load raw
+documents, clean navigation text and HTML artifacts, produce structured text).
+Expected output: A script `ingest.py` that fetches each URL using `requests` + `BeautifulSoup`,
+strips nav/footer/boilerplate, and saves cleaned text to `/data/raw/` as .txt files. A second
+script `chunk.py` that loads those files, splits them into 600-character chunks with 100-char
+overlap, attaches source metadata (filename, chunk index), and saves chunks as a JSON list.
+How I'll verify: I'll print 5 random chunks and check each is readable, self-contained, and
+contains no HTML artifacts or nav text. I'll also check total chunk count is between 100–600.
 
 **Milestone 4 — Embedding and retrieval:**
+Tool: Claude
+Input: My Retrieval Approach section (all-MiniLM-L6-v2, top-k=5), my Architecture diagram,
+and the chunk JSON output from Milestone 3.
+Expected output: A script `embed.py` that loads chunks, embeds them with
+`SentenceTransformer("all-MiniLM-L6-v2")`, stores them in a ChromaDB collection with source
+metadata, and exposes a `retrieve(query, k=5)` function returning chunks + source filenames.
+How I'll verify: I'll run 3 of my evaluation questions through `retrieve()` and check that
+returned chunks visibly relate to each question and have distance scores below 0.5.
 
 **Milestone 5 — Generation and interface:**
+Tool: Claude
+Input: My grounding requirement (answer only from retrieved context, refuse if not covered),
+my output format (answer + source list), and the Gradio interface requirements from the spec.
+Expected output: A `query.py` with an `ask(question)` function that calls `retrieve()`, builds a prompt with retrieved chunks as context, calls Groq's llama-3.3-70b-versatile, and returns `{"answer": ..., "sources": [...]}`. Plus `app.py` with a Gradio UI wiring the input box to `ask()` and displaying answer and sources separately.
+How I'll verify: I'll test all 5 evaluation questions end-to-end and confirm source attribution appears in every response. I'll also ask one out-of-scope question and confirm the system refuses rather than hallucinating.
